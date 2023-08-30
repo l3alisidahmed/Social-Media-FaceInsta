@@ -38,7 +38,7 @@ app.post("/add", (req, res) => {
 
 });
 
-app.delete("/delete", (req, res) => {
+app.delete("/delete/:id", (req, res) => {
     let data = getDataFromFile(path);
     let new_data = []
     const data_body = req.body;
