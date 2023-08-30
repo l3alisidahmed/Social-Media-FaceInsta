@@ -1,5 +1,6 @@
 const fs = require('fs');
 const express = require('express');
+const { isNumberObject } = require('util/types');
 const path = "./comment.json";
 
 const app = express();
@@ -23,46 +24,52 @@ let getDataFromFile = (filePath) => {
 }
 
 
-app.get("/", (req, res) => {
+app.get("/api/v1/posts/:postId/comments", (req, res) => {
+    let new_data = [];
     let data = getDataFromFile(path);
-    res.send(data);
+    for (let index = 0; index < data.length; index++) {
+        if (data[index]["_PId"] == req.params.postId) {
+            new_data.push(data[index]);
+        }
+    }
+    res.send(new_data);
 });
 
-app.post("/add", (req, res) => {
+app.post("/api/v1/posts/:postId/comments/:commentId", (req, res) => {
 
     let data = getDataFromFile(path);
     const comment = req.body;
-    data.push(comment);
+    data.push({"id": Number(req.params.commentId), "content": comment["content"], "_PId": Number(req.params.postId)});
     writeIntoFile(path, data);
     res.send("comment has been added")
 
 });
 
-app.delete("/delete", (req, res) => {
+app.delete("/api/v1/posts/:postId/comments/:commentId", (req, res) => {
     let data = getDataFromFile(path);
     let new_data = []
-    const data_body = req.body;
 
     for (let index = 0; index < data.length; index++) {
-        if (data[index]["id"] !== data_body["id"]) {
-            console.log(data[index]);
+        if (data[index]["_PId"] === Number(req.params.postId) && data[index]["id"] !== Number(req.params.commentId)) {
             new_data.push(data[index]);
         }
     }
 
+    console.log(new_data);
+
     writeIntoFile(path, new_data);
 
-    res.send(`comment with id ${data_body["id"]} has been deleted`);
+    res.send(`comment with id ${req.params.commentId} has been deleted`);
     
 });
 
-app.put("/update", (req, res) => {
+app.put("/api/v1/posts/:postId/comments/:commentId", (req, res) => {
     let new_data = []
     let data = getDataFromFile(path);
     const data_body = req.body;
     
     for (let index = 0; index < data.length; index++) {
-        if (data[index]["id"] === data_body["id"]) {
+        if ( data[index]["_PId"] === Number(req.params.postId) && data[index]["id"] === Number(req.params.commentId)) {
             data[index]["content"] = data_body["content"]
             new_data.push(data[index]);
         } else {
@@ -72,5 +79,5 @@ app.put("/update", (req, res) => {
     
     writeIntoFile(path, new_data);
     
-    res.send(`comment with id ${data_body["id"]} has been updated`);
+    res.send(`comment with id ${req.params.commentId} has been updated`);
 });
