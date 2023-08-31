@@ -14,6 +14,7 @@ const getAllPosts = (req, res) => {
 const getPost = (req, res) => {
   try {
     const id = req.params.id;
+    console.log(id)
     if(!parseInt(id)) {
       const err = new BadRequestError(`'${id}' Is Not ID! Provide A Valid Id Please`);
       return next(err);

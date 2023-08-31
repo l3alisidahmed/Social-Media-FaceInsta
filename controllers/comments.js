@@ -21,7 +21,7 @@ const getAllComments = (req, res) => {
   let new_data = [];
   let data = getDataFromFile(path);
   for (let index = 0; index < data.length; index++) {
-      if (data[index]["postid"] == req.params.postId) {
+      if (data[index]["postId"] === parseInt(req.params.postId)) {
           new_data.push(data[index]);
       }
   }
@@ -31,10 +31,14 @@ const getAllComments = (req, res) => {
 const addComment = (req, res) => {
 
   let data = getDataFromFile(path);
-  const comment = req.body;
-  data.push({"id": Number(req.params.commentId), "content": comment["content"], "_PId": Number(req.params.postId)});
+  const { content } = req.body;
+  const new_comment = {"id": Number(req.params.commentId), "content": content, "postId": Number(req.params.postId)};
+  data.push(new_comment);
   writeIntoFile(path, data);
-  res.send("comment has been added")
+  res.status(200).json({
+    success: true,
+    new_comment
+  })
 
 }
 
@@ -61,16 +65,16 @@ const deleteComment = (req, res) => {
 }
 
 const updateComment = (req, res) => {
+  let pos;
   let new_data = []
   let data = getDataFromFile(path);
-  const data_body = req.body;
+  const { content } = req.body;
   
   for (let index = 0; index < data.length; index++) {
     if ( data[index]["postId"] === Number(req.params.postId) && data[index]["id"] === Number(req.params.commentId)) {
-        data[index]["content"] = data_body["content"]
+        pos = index;
+        data[index]["content"] = content;
         new_data.push(data[index]);
-        // I Added This
-        break;
     } else {
         new_data.push(data[index]);
     }
@@ -82,7 +86,7 @@ const updateComment = (req, res) => {
   // I Added This
   res.status(200).json({ 
     success: true, 
-    comment: data[index]
+    comment: data[pos]
   });
 }
 
