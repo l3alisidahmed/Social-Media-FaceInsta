@@ -1,4 +1,3 @@
-const fs = require('fs');
 const { BadRequestError, NotFoundError } = require('../errors');
 const Post = require('../services/postService');
 
@@ -11,7 +10,7 @@ const getAllPosts = (req, res) => {
   }
 }
 
-const getPost = (req, res) => {
+const getPost = (req, res, next) => {
   try {
     const id = req.params.id;
     console.log(id)

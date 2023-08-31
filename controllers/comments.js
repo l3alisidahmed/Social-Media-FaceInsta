@@ -25,17 +25,17 @@ const getAllComments = (req, res) => {
           new_data.push(data[index]);
       }
   }
-  res.send(new_data);
+  res.status(200).json({ success: true, comments: new_data });
 }
 
 const addComment = (req, res) => {
 
   let data = getDataFromFile(path);
   const { content } = req.body;
-  const new_comment = {"id": Number(req.params.commentId), "content": content, "postId": Number(req.params.postId)};
+  const new_comment = {"id": Date.now(), "content": content, "postId": Number(req.params.postId)};
   data.push(new_comment);
   writeIntoFile(path, data);
-  res.status(200).json({
+  res.status(201).json({
     success: true,
     new_comment
   })

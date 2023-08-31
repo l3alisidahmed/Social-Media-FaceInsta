@@ -1,6 +1,5 @@
 const fs = require('fs');
 
-
 class Post {
   static posts = this.getPosts();
   static length = this.posts.length;

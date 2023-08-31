@@ -7,8 +7,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/api/v1/posts', postsRouter);
-app.use('/api/v1/posts', commentsRouter);
+app.use('/api/v1/posts', postsRouter, commentsRouter);
 
 // Middleware to handle errors
 app.use(errorHandler);

@@ -5,7 +5,6 @@ const errorHandler = (err, req, res, next) => {
     message: err.message || 'Internal Server Error!',
     status: err.statusCode || 500
   }
-  console.log('inside error handler');
 
   if(err instanceof CustomError) {
     customResponse.message = err.message;
