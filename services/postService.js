@@ -16,12 +16,12 @@ class Post {
   }
 
   static getPosts() {
-    const postsStr = fs.readFileSync('post.json', 'utf-8');
+    const postsStr = fs.readFileSync('models/post.json', 'utf-8');
     return JSON.parse(postsStr);
   }
 
   static savePosts() {
-    fs.writeFileSync('post.json', JSON.stringify(Post.posts));
+    fs.writeFileSync('models/post.json', JSON.stringify(Post.posts));
   }
 
   getPost() {
@@ -56,7 +56,7 @@ class Post {
 
   static removePost(id) {
     const length = Post.length;
-    const commentsStr = fs.readFileSync('comment.json', 'utf-8');
+    const commentsStr = fs.readFileSync('models/comment.json', 'utf-8');
     let comments = JSON.parse(commentsStr);
 
     Post.posts = Post.posts.filter(post => post.id !== parseInt(id));
@@ -64,7 +64,7 @@ class Post {
       return false;
     }
     comments = comments.filter(comment => comment.postId !== parseInt(id));
-    fs.writeFileSync('comment.json', JSON.stringify(comments));
+    fs.writeFileSync('models/comment.json', JSON.stringify(comments));
     Post.savePosts();
     Post.length--;
     return true;

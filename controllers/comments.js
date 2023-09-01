@@ -1,7 +1,25 @@
 const fs = require('fs');
+const { NOTFOUND } = require('dns');
+const { connect } = require('http2');
+const Post = require("../services/postService.js");
+const { BadRequestError, NotFoundError } = require('../errors');
+const formatDate = require('../services/dateService.js');
 
-const path = "./comment.json";
+const path = "models/comment.json";
 
+let chekPostId = (postID) => {
+  if (!parseInt(postID)) {
+    return `${postID} Is Not ID! Provide A Valid Id Please`;
+  }
+}
+
+let chekCommentId = (commentID) => {
+  if (!parseInt(commentID)) {
+    return `${commentID} Is Not ID! Provide A Valid Id Please`;
+  }
+}
+
+// put data in file
 let writeIntoFile = (filePath, insertContent) => {
   fs.writeFile(filePath, JSON.stringify(insertContent), (err) => {
     if (err) {
@@ -12,82 +30,222 @@ let writeIntoFile = (filePath, insertContent) => {
   });
 }
 
+// get data from file
 let getDataFromFile = (filePath) => {
   const content = fs.readFileSync(filePath, 'utf8');
   return JSON.parse(content);
 }
 
-const getAllComments = (req, res) => {
-  let new_data = [];
-  let data = getDataFromFile(path);
-  for (let index = 0; index < data.length; index++) {
-      if (data[index]["postId"] === parseInt(req.params.postId)) {
-          new_data.push(data[index]);
-      }
+//get all comments in post with id of post
+const getAllComments = (req, res, next) => {
+  try {
+    
+    let new_data = [];
+    let data = getDataFromFile(path);
+    
+    const id = req.params.postId;
+    const post = Post.getPostById(id);
+
+    for (let index = 0; index < data.length; index++) {
+        if (data[index]["postId"] === parseInt(id)) {
+            new_data.push(data[index]);
+        }
+    }
+
+    if(!post) {
+      const err = new NotFoundError(`There is no Post With ID ${id}!`);
+      return next(err);
+    }
+
+    res.status(200).json({ success: true, comments: new_data });
+
+  } 
+  catch (err) {
+    console.log(err);
   }
-  res.status(200).json({ success: true, comments: new_data });
 }
 
 const addComment = (req, res) => {
 
-  let data = getDataFromFile(path);
-  const { content } = req.body;
-  const new_comment = {"id": Date.now(), "content": content, "postId": Number(req.params.postId)};
-  data.push(new_comment);
-  writeIntoFile(path, data);
-  res.status(201).json({
-    success: true,
-    new_comment
-  })
+  try {
+    let data = getDataFromFile(path);
 
-}
+    const { content } = req.body;
+    const id = req.params.postId;
+    const postIdErr = chekPostId(req.params.postId);
 
-const deleteComment = (req, res) => {
-  let data = getDataFromFile(path);
-  let new_data = []
-
-  for (let index = 0; index < data.length; index++) {
-    if (data[index]["postId"] === Number(req.params.postId) && data[index]["id"] !== Number(req.params.commentId)) {
-        new_data.push(data[index]);
+    if (postIdErr) {
+      res.status(400).json({
+        success: false,
+        message: postIdErr
+      })
     }
-  }
 
-  console.log(new_data);
-
-  writeIntoFile(path, new_data);
-
-  // res.send(`comment with id ${req.params.commentId} has been deleted`);
-  // I Added this
-  res.status(200).json({ 
-    success: true, 
-    message: `Comment With ID ${req.params.commentId} Has Been Deleted`
-  });
-}
-
-const updateComment = (req, res) => {
-  let pos;
-  let new_data = []
-  let data = getDataFromFile(path);
-  const { content } = req.body;
-  
-  for (let index = 0; index < data.length; index++) {
-    if ( data[index]["postId"] === Number(req.params.postId) && data[index]["id"] === Number(req.params.commentId)) {
-        pos = index;
-        data[index]["content"] = content;
-        new_data.push(data[index]);
+    if (content !== "") {
+      const currentDate = new Date();
+      const date = formatDate(currentDate);
+      const new_comment = {
+        "id": Date.now(), 
+        "content": content, 
+        "createdAt": date,
+        "postId": Number(id)
+      };
+      
+      data.push(new_comment);
+      writeIntoFile(path, data);
+      
+      res.status(201).json({
+        success: true,
+        new_comment
+      });
     } else {
-        new_data.push(data[index]);
+      res.status(400).json({
+        success: false,
+        message: "Your Comment Is Empty, Please Write Something"
+      });
+      
+    }
+
+  }
+  catch (err) {
+    console.log(err);
+  }
+}
+
+const deleteComment = (req, res, next) => {
+ try {
+
+  let found = false;
+  let data = getDataFromFile(path);
+  
+  const postId = req.params.postId;
+  const commentId = req.params.commentId;
+  const post = Post.getPostById(postId);
+  const postIdErr = chekPostId(postId);
+  const commentIdErr = chekPostId(commentId);
+
+  if (postIdErr) {
+    res.status(400).json({
+      success: false,
+      message: postIdErr
+    })
+  }
+
+  if (commentIdErr) {
+    res.status(400).json({
+      success: false,
+      message: commentIdErr
+    })
+  }
+
+  if(!post) {
+    const err = new NotFoundError(`There is no Post With ID ${postId}!`);
+    return next(err);
+  }
+
+  for (let index = 0; index < data.length; index++) {
+    if (data[index]["postId"] === Number(postId)) {
+      if (data[index]["id"] === Number(commentId)) {
+        found =  true;  
+        data.splice(index, index + 1);
+      }
     }
   }
+
+  if (found) {
+    console.log(data);
   
-  writeIntoFile(path, new_data);
+    writeIntoFile(path, data);
   
-  // res.send(`comment with id ${req.params.commentId} has been updated`);
-  // I Added This
-  res.status(200).json({ 
-    success: true, 
-    comment: data[pos]
-  });
+    // I Added this
+    res.status(200).json({ 
+      success: true, 
+      message: `Comment With ID ${commentId} Has Been Deleted`
+    });
+  } else {
+    res.status(404).json({
+      success: false,
+      message: `Not Found Comment With ID ${commentId}`
+    })
+  }
+ } 
+ catch (err) {
+  console.log(err);
+ }
+
+}
+
+const updateComment = (req, res, next) => {
+  try {
+    
+    let pos;
+    let data = getDataFromFile(path);
+
+
+    const { content } = req.body;
+    const postId = req.params.postId;
+    const postIdErr = chekPostId(postId);
+    const post = Post.getPostById(postId);
+    const commentId = req.params.commentId;
+    const commentIdErr = chekPostId(commentId);
+
+    if (postIdErr) {
+      res.status(400).json({
+        success: false,
+        message: postIdErr
+      })
+    }
+
+    if (commentIdErr) {
+      res.status(400).json({
+        success: false,
+        message: commentIdErr
+      })
+    }
+
+    if(!post) {
+      const err = new NotFoundError(`There is no Post With ID ${postId}!`);
+      return next(err);
+    }
+
+    if (connect === "") {
+      return res.status(400).json({
+        success: false,
+        message: "your comment is empty, please write something"
+      })
+    }
+    
+    for (let index = 0; index < data.length; index++) {
+      if ( data[index]["postId"] === Number(postId) && data[index]["id"] === Number(commentId)) {
+          pos = index;
+          data[index]["content"] = content;
+          new_comment = {
+            "id": data[index]["id"], 
+            "content": data[index]["content"], 
+            "createdAt": data[index]["createdAt"],
+            "postId": data[index]["postId"]
+          }
+          data.splice(index, index+1, new_comment)
+      }
+    }
+
+    if (!pos) {
+      return res.status(404).json({
+        success: false,
+        message: `there is not comment with this id ${commentId}`
+      })
+    }
+    
+    writeIntoFile(path, data);
+        // I Added This
+    res.status(200).json({ 
+      success: true, 
+      comment: data[pos]
+    });
+  }
+  catch (err) {
+    console.log(err);
+  }
 }
 
 module.exports = {

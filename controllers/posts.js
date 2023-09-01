@@ -1,6 +1,7 @@
 const fs = require('fs');
 const { BadRequestError, NotFoundError } = require('../errors');
 const Post = require('../services/postService');
+const formatDate = require('../services/dateService');
 
 const getAllPosts = (req, res) => {
   try {
@@ -38,10 +39,7 @@ const createPost = (req, res, next) => {
       return next(err);
     }
     const currentDate = new Date();
-    const day = currentDate.getDate().toString().padStart(2, 0);
-    const month = (currentDate.getMonth()+1).toString().padStart(2, 0);
-    const year = currentDate.getFullYear();
-    const date = `${day}/${month}/${year}`;
+    const date = formatDate(currentDate);
     const post = new Post(description, image, date, likes);
     res.status(201).json({ success: true, post: post.getPost() });
   } catch (err) {
