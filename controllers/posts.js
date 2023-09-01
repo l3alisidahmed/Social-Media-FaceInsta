@@ -1,3 +1,4 @@
+const fs = require('fs');
 const { BadRequestError, NotFoundError } = require('../errors');
 const Post = require('../services/postService');
 
@@ -31,17 +32,17 @@ const getPost = (req, res, next) => {
 
 const createPost = (req, res, next) => {
   try {
-    const { description, image } = req.body;
+    const { description, image, likes } = req.body;
     if(!description && !image) {
       const err = new BadRequestError('Description And Image Fields Are Null! Fill One Field At Least');
       return next(err);
     }
     const currentDate = new Date();
-    const day = currentDate.getDate();
+    const day = currentDate.getDate().toString().padStart(2, 0);
     const month = (currentDate.getMonth()+1).toString().padStart(2, 0);
     const year = currentDate.getFullYear();
-    const date = `${day}/${month}/${year}`
-    const post = new Post(description, image, date);
+    const date = `${day}/${month}/${year}`;
+    const post = new Post(description, image, date, likes);
     res.status(201).json({ success: true, post: post.getPost() });
   } catch (err) {
     console.error(err);
@@ -55,12 +56,12 @@ const updatePost = (req, res, next) => {
       const err = new BadRequestError(`'${id}' Is Not ID! Provide A Valid Id Please`);
       return next(err);
     }
-    const { description, image } = req.body;
+    const { description, image, likes } = req.body;
     if(!description && !image) {
       const err = new BadRequestError('Description And Image Fields Are Null! Fill One Field At Least');
       return next(err);
     }
-    const post = Post.updatePost(id, { description, image });
+    const post = Post.updatePost(id, { description, image, likes });
     if(!post) {
       const err = new NotFoundError(`There is no Post With ID ${id}!`);
       return next(err);
