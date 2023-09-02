@@ -1,11 +1,12 @@
-const options = document.querySelectorAll('.options');
+// const options = document.querySelectorAll('.options');
 
-options.forEach(option => {
-    const list = option.nextElementSibling;
-    option.onclick = () => {
-        list.classList.toggle('active');
-    }
-})
+// options.forEach(option => {
+//     const list = option.nextElementSibling;
+//     option.onclick = () => {
+//         console.log(option);
+//         list.classList.toggle('active');
+//     }
+// })
 // Add this code to your style.js file
 // Add this code to your style.js file
 
