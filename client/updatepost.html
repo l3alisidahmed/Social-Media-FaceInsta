@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Post</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+    <header>
+        <!-- Add your header content here -->
+    </header>
+    <main>
+        <div class="update-post">
+            <h1>Update Post</h1>
+            <form action="update_post.php" method="POST">
+                <div class="form-group">
+                    <label for="updatedDescription">Updated Description:</label>
+                    <input type="text" id="updatedDescription" name="updatedDescription" required>
+                </div>
+                <div class="form-group">
+                    <label for="updatedImageUrl">Updated Image URL:</label>
+                    <input type="text" id="updatedImageUrl" name="updatedImageUrl" required>
+                </div>
+                <button type="submit">Update Post</button>
+            </form>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
