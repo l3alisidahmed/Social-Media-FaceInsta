@@ -17,29 +17,47 @@ body {
 }
 
 /* I Added This */
+.parent-container {
+    width: 100%;
+    padding: 0 14%;
+}
+
 header {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
 }
 
 main {
     display: flex;
-    width: 100%;
 }
 
 .stories-container {
-    width: calc(100% - 300px);
+    width: 100%;
     display: flex;
     align-items: center;
-    /* overflow-x: scroll; */
+    overflow-x: scroll;
+    scrollbar-width: none;
+}
+
+.stories-container::-webkit-scrollbar {
+    width: 0;
+}
+
+.desc {
+    font-size: .9rem;
+    margin-bottom: 10px;
 }
 /***************/
 
 .sidebar {
     /* position: fixed; */
-    width: 22%;
-    height: 100vh;
+    width: 300px;
+    height: calc(100vh - 70px);
     background: #f8f8f8;
-    padding: 20px;
+    padding: 0 20px;
+    margin-top: 30px;
 }
 .main-home {
     /* position: absolute; */
@@ -51,6 +69,13 @@ main {
     border-radius: 1rem 0 0 1rem;
     z-index: 1000;
 }
+
+/* I added this */
+.main-home::-webkit-scrollbar {
+    display: none;
+}
+/***************/
+
 .logo img {
     width: 100px;
 }
@@ -168,41 +193,43 @@ main {
 .header-content{
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 .header-content i{
     color: #000;
     font-size: 20px;
-    margin-left: 1rem;
+    /* margin-left: 1rem; */
 }
 .header-content .btn {
     display: flex;
     align-items: center;
-    padding: 2px;
-    border-radius: 15px;
+    gap: 5px;
+    padding: 5px;
+    border-radius: 10px;
     background: var(--gradient);
-    margin-left: 36rem;
+    /* margin-left: 36rem; */
 }
 .header-content .btn i{
     color: hsla(0, 0%,100%, 0.6);
-    margin-right: 55px;
+    /* margin-right: 55px; */
 }
 .btn-text{
     color: #fff;
 }
 .stories-title{
-    width: calc(100% - 300px);
+    width: 100%;
     display: flex;
     justify-content:space-between;
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
 }
 .stories-title h1{
-    font-size: 1.8rem;
+    font-size: 1.5rem;
 }
 .stories-title .btn {
-display: flex;
-align-items: center;
-color: #000;
-margin-left: 800px ;
+    display: flex;
+    align-items: center;
+    color: #000;
+    /* margin-left: 800px; */
 }
 .stories-title .btn i{
     font-size: 24px;
@@ -248,21 +275,21 @@ margin-left: 800px ;
     background: hsla(246, 100%, 67%, 0.7);
 }
 .feed {
-    width: calc(100% - 300px);
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 1rem;
 }
 .feed h1 {
-    font-size: 1.7rem;
-    margin-bottom: 50px;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
 }
 .feed-text {
     display: flex;
     align-items: center;
-    margin-left: 790px;
-    margin-bottom: 70px;
+    /* margin-left: 790px; */
+    margin-bottom: 20px;
 }
 .feed-text h2{
     font-size: 1rem;
@@ -270,20 +297,36 @@ margin-left: 800px ;
 }
 .main-posts{
     width: 100%;
-    height: 700px;
+    height: 100vh;
     /* display:grid;
     grid-template-columns: repeat(auto-fit,minmax(300px,auto));
     gap: 13px; */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     overflow-y: scroll;
+    scrollbar-width: none;
 }
+
+/* I Added This */
+.main-posts::-webkit-scrollbar {
+    width: 0;
+}
+/****************/
+
 .post-box{
-    width: 950px;
+    width: 90%;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px grey;
+    padding: 10px;
+    margin: 0 auto;
 }
 .post-box img{
     width: 100%;
     height:344px;
     object-fit: cover;
-    border-radius: 0.5rem;
+    /* border-radius: 0.5rem; */
 }
 .post-info{
     display: flex;
@@ -340,10 +383,10 @@ margin-left: 800px ;
     height: 100px;
     position: absolute;
     list-style: none;
-    background-color: rgb(62, 97, 223);
+    background-color: whitesmoke;
     padding: 5px;
     border-radius: 5px;
-    box-shadow: 2px 2px 5px grey;
+    box-shadow: 1px 0px 5px grey;
 }
 
 .active {
@@ -356,3 +399,23 @@ li {
 .container {
     position: relative;
 }
+
+/* I Added This */
+@media (max-width: 700px) {
+    .parent-container {
+        padding: 0 10px;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .main-home {
+        width: 100%;
+    }
+
+    .post-box {
+        width: 95%;
+    }
+}
+/**************/
