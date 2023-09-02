@@ -1,36 +1,36 @@
 /* google fonts*/
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;1,200;1,700&display=swap');
-  * {
-    font-family: "poppins", sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;1,200;1,700&display=swap');
+* {
+  font-family: "poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+:root{
+    --gradient: linear-gradient(to right, #e2336b, #fcac46);
+}
+
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    list-style: none;
-    text-decoration: none;
-  }
-  body {
-    background: #f8f8f8;
-  }
-  :root{
-    --gradient: linear-gradient(to right, #e2336b, #fcac46);
-  }
-  .sidebar {
-    position: fixed;
+}
+
+body {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
+.sidebar {
     width: 300px;
     height: 100vh;
     background: #f8f8f8;
     padding: 20px;
   
-  }
-  .main-home {
-    position: absolute;
-    width: calc(100% - 300%);
-    min-height: 100vh;
-    top: 0;
-    left: 300px;
-    background: #fff;
-    border-radius: 1rem 0 0 1rem;
-    z-index: 1000;
   }
   .logo img {
     width: 100px;
@@ -117,9 +117,19 @@
     height: 17px;
     background: #e2336b;
 }
-.main-home{
+
+
+.main-home {
+    padding-left: 80px;
+    padding-right: 80px;
+    width: 100%;
+    min-height: 100vh;
+    background: #fff;
+    border-radius: 1rem 0 0 1rem;
+    z-index: 1000;
     overflow:visible;
 }
+
 .header{
     display: flex;
     align-items: center;
@@ -144,6 +154,7 @@
 .search{
     font-size: 20px;
 }
+
 .header-content{
     display: flex;
     align-items: center;
@@ -189,7 +200,7 @@ margin-left: 800px ;
 .stories{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin-top: 2rem;
 }
 .stories-img{
@@ -244,14 +255,12 @@ margin-left: 800px ;
     font-size: 1rem;
     margin-right: 1rem;
 }
-.main-posts{
-    display:grid;
-    grid-template-columns: repeat(auto-fit,minmax(300px,auto));
-    gap: 13px;
-}
+/* .main-post{
+    padding-left: 80PX;
+    padding-right: 80px; 
+} */
 .post-box{
- 
-    width: 950px;
+    width: 100%;
 }
 .post-box img{
     width: 100%;
@@ -330,3 +339,5 @@ li {
 .container {
     position: relative;
 }
+
+
