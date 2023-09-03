@@ -1,0 +1,75 @@
+/* Reset some default browser styles */
+body, form {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Center the form on the page */
+  body {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    background-color: #f0f0f0;
+  }
+  
+  /* Style the form container */
+  #myForm {
+    background-color: #fff;
+    padding: 60px;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  /* Style form labels and inputs */
+  label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #237272;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 20px 0;
+    border: 3px solid #8366a9;
+    border-radius: 10px;
+    font-size: 12px;
+  }
+  
+  /* Style the submit button */
+  button[type="submit"] {
+    background-color: #5f5f86;
+    color: #fff;
+    padding:12px 26px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 19px;
+    margin-top: 30px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #994ba5;
+  }
+  
+  /* Center the description and img URL inputs */
+  #desc, #path {
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  /* Add some colors to the labels */
+  label[for="desc"] {
+    color: #c7afef; /* Red color for description label */
+  }
+  
+  label[for="path"] {
+    color: #e2dceb; /* Green color for img URL label */
+  }
+  
