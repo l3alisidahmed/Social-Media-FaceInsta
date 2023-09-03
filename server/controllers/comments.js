@@ -62,7 +62,7 @@ const addComment = (req, res) => {
     const data = Comment.addComment(id, content);
 
     if (postIdErr) {
-      res.status(400).json({
+      return res.status(400).json({
         success: false,
         message: postIdErr
       })
@@ -98,14 +98,14 @@ const deleteComment = (req, res, next) => {
   let isDeleted = comment.deleteComment(postId, commentId);
 
   if (postIdErr) {
-    res.status(400).json({
+    return res.status(400).json({
       success: false,
       message: postIdErr
     });
   }
 
   if (commentIdErr) {
-    res.status(400).json({
+    return res.status(400).json({
       success: false,
       message: commentIdErr
     });
@@ -145,14 +145,14 @@ const updateComment = (req, res, next) => {
     const commentIdErr = chekPostId(commentId);
 
     if (postIdErr) {
-      res.status(400).json({
+      return res.status(400).json({
         success: false,
         message: postIdErr
       })
     }
 
     if (commentIdErr) {
-      res.status(400).json({
+      return res.status(400).json({
         success: false,
         message: commentIdErr
       })

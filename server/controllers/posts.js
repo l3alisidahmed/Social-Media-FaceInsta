@@ -1,4 +1,3 @@
-const fs = require('fs');
 const { BadRequestError, NotFoundError } = require('../errors');
 const Post = require('../services/postService');
 const formatDate = require('../services/dateService');
@@ -21,6 +20,7 @@ const getPost = (req, res, next) => {
       return next(err);
     }
     const post = Post.getPostById(id);
+    console.log(post);
     if(!post) {
       const err = new NotFoundError(`There is no Post With ID ${id}!`);
       return next(err);
