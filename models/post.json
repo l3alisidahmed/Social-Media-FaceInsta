@@ -1,16 +1,1 @@
-[
-  {
-    "id": 1693581915201,
-    "description": "☕ Coffee is a beloved beverage enjoyed by people around the world🥰.",
-    "image": "../client/images/pexels-photo-312418.webp",
-    "likes": 30,
-    "createdAt": "01/09/2023"
-  },
-  {
-    "id": 1693582084337,
-    "description": "☕ Coffee is a beloved beverage enjoyed by people around the world🥰.",
-    "image": "../client/images/pexels-photo-312418.webp",
-    "likes": 30,
-    "createdAt": "01/09/2023"
-  }
-]
+[{"id":1693581915201,"description":"☕ Coffee is a beloved beverage enjoyed by people around the world🥰.","image":"../client/images/pexels-photo-312418.webp","likes":30,"createdAt":"01/09/2023"},{"id":1693582084337,"description":"☕ Coffee is a beloved beverage enjoyed by people around the world🥰.","image":"../client/images/pexels-photo-312418.webp","likes":30,"createdAt":"01/09/2023"},{"id":1693768147105,"description":"money","image":"../client/images/Business-Facebook-NYU-Researchers-1083673190.webp","likes":12,"createdAt":"03/09/2023"},{"id":1693770791026,"description":"hello","image":"../client/images/Business-Facebook-NYU-Researchers-1083673190.webp","likes":2,"createdAt":"03/09/2023"},{"id":1693770887842,"description":"kawther","image":"../client/images/Business-Facebook-NYU-Researchers-1083673190.webp","likes":2,"createdAt":"03/09/2023"}]
