@@ -1,6 +1,6 @@
 let id;
 setTimeout(() => {
-    const postBox = document.querySelectorAll('.post-box .pic');
+    const postBox = document.querySelectorAll('.post-box .post-image');
     console.log(postBox);
     console.log(window.location.href);
     postBox.forEach(element => {
@@ -10,4 +10,4 @@ setTimeout(() => {
             window.location.href = 'http://127.0.0.1:5500/client/comments/index.html';
         })
     });
-}, 5000);
+}, 500);
