@@ -59,23 +59,96 @@ commentSpan.textContent = commentTxt;
 likes.appendChild(commentSpan);
 postInfo.appendChild(likes);
 
+/* I Added This */
+const postHeader = () => {
+    return `
+        <div class="container">
+            <span class="options">...</span>
+            <ul class="list">
+                <li class="update">Update</li>
+                <li class="delete">Delete</li>
+            </ul>
+        </div> 
+    `;
+}
+
+const createPostProfile = () => {
+    return `
+        <div class="post-profile">
+            <div class="post-img">
+                <img src="images/pexels-photo-312418.webp" alt="">
+            </div>
+            <h3>Marques B</h3>
+        </div>
+    `;
+}
+
+const commentsSection = () => {
+    return `
+        <div class="comments-section" style="display: none;">
+            <input type="text" class="comment-input" placeholder="Add a comment...">
+            <button id="submit-comment">Submit</button>
+            <div class="comments"> </div>
+        </div>
+    `;
+}
+
+const createPostInfo = (likes) => {
+    return `
+        <div class="post-info">
+            ${createPostProfile()}
+            <div class="likes">
+                <i class="ri-heart-line"></i>
+                <span>${likes}</span>
+                <i class="ri-chat-3-line toggle-comments"></i>
+                ${commentsSection()}
+                <span>96</span>
+            </div>
+        </div>
+    `;
+}
+
+const createPost = (post) => {
+    const { id, description, image, likes } = post;
+    const postDom = document.createElement('div');
+    postDom.id = id
+    postDom.classList.add('post-box');
+
+    postDom.innerHTML =  `
+        ${postHeader()}
+        <p class="desc">${description}</p>
+        <img src="${image}" alt="">
+        ${createPostInfo(likes)}
+    `;
+
+    return postDom;
+}
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+
 fetch('http://localhost:5000/api/v1/posts')
 .then(res => res.json())
 .then(data => {
     const arr = data.posts;
+    console.log(arr);
     arr.forEach(element => {
-        myImg.alt = "";
-        myImg.src = element.image;
-        myP.textContent = element.description;
-        likesSpan.textContent = element.likes;
-        postBox.id = element.id;
-        mainPosts.append(postBox);
+        // myImg.alt = "";
+        // myImg.src = element.image;
+        // myP.textContent = element.description;
+        // likesSpan.textContent = element.likes;
+        // postBox.id = element.id;
+
+        /* I Added This */
+        const post = createPost(element);
+        mainPosts.append(post);
+        /*^^^^^^^^^^^^^^*/
+
+        // mainPosts.append(postBox);
 
         const options = document.querySelectorAll('.options');
-        console.log(options );
+        console.log(options);
 
         options.forEach(option => {
-        const list = option.nextElementSibling;
+            const list = option.nextElementSibling;
             option.onclick = () => {
                 list.classList.toggle('active');
             }
@@ -83,7 +156,8 @@ fetch('http://localhost:5000/api/v1/posts')
     });
     let deleteBtn = document.querySelectorAll('.delete');
     deleteBtn.forEach(element => {
-        element.addEventListener('click', () => {
+        element.addEventListener('click', e => {
+            e.preventDefault();
             const postId = element.parentElement.parentElement.parentElement.id 
             console.log(postId);
             const post = document.getElementById(postId);
