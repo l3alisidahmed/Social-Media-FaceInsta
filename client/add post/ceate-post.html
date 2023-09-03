@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Create Post</title>
-    <link rel="stylesheet" href="form.css">
 </head>
 <body>
     <header>
@@ -22,16 +22,10 @@
                     <label for="imageUrl">Image URL:</label>
                     <input type="text" id="imageUrl" name="imageUrl" required>
                 </div>
-                <button type="submit">Create Post</button>
+                <button type="submit" id="submit-post">Create Post</button>
             </form>
         </div>
     </main>
-     <script>
-        const formEl = document.querySelector('.Post');
-
-           formEl.addEventListener('Create Post', () => {
-            
-           })
-     </script>
+     <script src="./addPost.js"></script>
 </body>
 </html>

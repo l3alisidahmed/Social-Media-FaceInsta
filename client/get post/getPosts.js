@@ -1,65 +1,68 @@
 const mainPosts = document.querySelector('.main-posts')
-const postBox = document.createElement('div');
-const myContainer = document.createElement('div');
-const mySpan = document.createElement('span');
-const myList = document.createElement('ul');
-const item1 = document.createElement('li');
-const item2 = document.createElement('li');
-const myP = document.createElement('p');
-const myTxt = `☕ Coffee is a beloved beverage enjoyed by people around the world🥰.`;
-const myImg = document.createElement('img');
-const postInfo = document.createElement('div');
-const postProfile = document.createElement('div');
-const postImg = document.createElement('div');
-const imgProfile = document.createElement('img');
-const myH3 = document.createElement('h3');
-const h3Txt = "Marques B";
-const likes = document.createElement('div');
-const heartIcon = document.createElement('i');
-const likesSpan = document.createElement('span');
-const likesTxt = "86.3k";
-const commentIcon = document.createElement('i');
-const commentSpan = document.createElement('span');
-const commentTxt = "80";
+// const postBox = document.createElement('div');
+// const myContainer = document.createElement('div');
+// const mySpan = document.createElement('span');
+// const myList = document.createElement('ul');
+// const item1 = document.createElement('li');
+// const item2 = document.createElement('li');
+// const myP = document.createElement('p');
+// const myTxt = `☕ Coffee is a beloved beverage enjoyed by people around the world🥰.`;
+// const myImg = document.createElement('img');
+// const postInfo = document.createElement('div');
+// const postProfile = document.createElement('div');
+// const postImg = document.createElement('div');
+// const imgProfile = document.createElement('img');
+// const myH3 = document.createElement('h3');
+// const h3Txt = "Marques B";
+// const likes = document.createElement('div');
+// const heartIcon = document.createElement('i');
+// const likesSpan = document.createElement('span');
+// const likesTxt = "86.3k";
+// const commentIcon = document.createElement('i');
+// const commentSpan = document.createElement('span');
+// const commentTxt = "80";
 
-postBox.className = 'post-box';
-myContainer.className = 'container';
-mySpan.className = 'options';
-myList.className = 'list';
-item1.className = 'update';
-item2.className = 'delete';
-postInfo.className = 'post-info';
-postProfile.className = 'post-profile';
-postImg.className = 'post-img';
-imgProfile.src = 'images/pexels-photo-312418.webp';
-likes.className = 'likes';
-heartIcon.className = 'ri-heart-line';
-commentIcon.className = 'ri-chat-3-line toggle-comments';
+// postBox.className = 'post-box';
+// myContainer.className = 'container';
+// mySpan.className = 'options';
+// myList.className = 'list';
+// item1.className = 'update';
+// item2.className = 'delete';
+// postInfo.className = 'post-info';
+// postProfile.className = 'post-profile';
+// postImg.className = 'post-img';
+// imgProfile.src = 'images/pexels-photo-312418.webp';
+// likes.className = 'likes';
+// heartIcon.className = 'ri-heart-line';
+// commentIcon.className = 'ri-chat-3-line toggle-comments';
 
-postBox.appendChild(myContainer);
-mySpan.textContent = "..."
-myContainer.appendChild(mySpan);
-myContainer.appendChild(myList);
-item1.textContent = item1.className;
-item2.textContent = item2.className;
-myList.appendChild(item1);
-myList.appendChild(item2);
-postBox.appendChild(myP);
-postBox.appendChild(myImg);
-postInfo.appendChild(postProfile);
-postProfile.appendChild(postImg);
-postImg.appendChild(imgProfile);
-myH3.textContent = h3Txt;
-postProfile.appendChild(myH3);
-postBox.appendChild(postInfo);
-likes.appendChild(heartIcon);
-likes.appendChild(likesSpan);
-likes.appendChild(commentIcon);
-commentSpan.textContent = commentTxt;
-likes.appendChild(commentSpan);
-postInfo.appendChild(likes);
+// postBox.appendChild(myContainer);
+// mySpan.textContent = "..."
+// myContainer.appendChild(mySpan);
+// myContainer.appendChild(myList);
+// item1.textContent = item1.className;
+// item2.textContent = item2.className;
+// myList.appendChild(item1);
+// myList.appendChild(item2);
+// postBox.appendChild(myP);
+// postBox.appendChild(myImg);
+// postInfo.appendChild(postProfile);
+// postProfile.appendChild(postImg);
+// postImg.appendChild(imgProfile);
+// myH3.textContent = h3Txt;
+// postProfile.appendChild(myH3);
+// postBox.appendChild(postInfo);
+// likes.appendChild(heartIcon);
+// likes.appendChild(likesSpan);
+// likes.appendChild(commentIcon);
+// commentSpan.textContent = commentTxt;
+// likes.appendChild(commentSpan);
+// postInfo.appendChild(likes);
 
 /* I Added This */
+import updatePost from "../update/updatePost.js";
+import updateLikes from "./updateLikes.js";
+
 const postHeader = () => {
     return `
         <div class="container">
@@ -68,7 +71,7 @@ const postHeader = () => {
                 <li class="update">Update</li>
                 <li class="delete">Delete</li>
             </ul>
-        </div> 
+        </div>
     `;
 }
 
@@ -98,8 +101,8 @@ const createPostInfo = (likes) => {
         <div class="post-info">
             ${createPostProfile()}
             <div class="likes">
-                <i class="ri-heart-line"></i>
-                <span>${likes}</span>
+                <i class="ri-heart-line likes-count"></i>
+                <span class="hearts-number">${likes}</span>
                 <i class="ri-chat-3-line toggle-comments"></i>
                 ${commentsSection()}
                 <span>96</span>
@@ -111,15 +114,17 @@ const createPostInfo = (likes) => {
 const createPost = (post) => {
     const { id, description, image, likes } = post;
     const postDom = document.createElement('div');
-    postDom.id = id
+    postDom.id = id;
     postDom.classList.add('post-box');
 
     postDom.innerHTML =  `
         ${postHeader()}
         <p class="desc">${description}</p>
-        <img src="${image}" alt="">
+        <img class="post-image" src="${image}" alt="">
         ${createPostInfo(likes)}
     `;
+    updatePost(postDom);
+    updateLikes(postDom);
 
     return postDom;
 }
@@ -156,8 +161,7 @@ fetch('http://localhost:5000/api/v1/posts')
     });
     let deleteBtn = document.querySelectorAll('.delete');
     deleteBtn.forEach(element => {
-        element.addEventListener('click', e => {
-            e.preventDefault();
+        element.addEventListener('click', () => {
             const postId = element.parentElement.parentElement.parentElement.id 
             console.log(postId);
             const post = document.getElementById(postId);
