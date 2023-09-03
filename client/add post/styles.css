@@ -1,4 +1,8 @@
 /* Reset some default browser styles */
+* {
+  box-sizing: border-box;
+}
+
 body, form {
     margin: 0;
     padding: 0;
@@ -17,7 +21,8 @@ body, form {
   /* Style the form container */
   #myForm {
     background-color: #fff;
-    padding: 60px;
+    padding: 40px;
+    margin: 20px;
     border-radius: 40px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -35,7 +40,7 @@ body, form {
   input[type="text"] {
     width: 100%;
     padding: 10px;
-    margin: 20px 0;
+    
     border: 3px solid #8366a9;
     border-radius: 10px;
     font-size: 12px;
@@ -73,10 +78,5 @@ body, form {
   label[for="path"] {
     color: #e2dceb; /* Green color for img URL label */
   }
-
-  @media (max-width: 700px) {
-    #myForm {
-      width: 1500px;
-    }
-  }
+    
   
