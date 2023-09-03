@@ -117,7 +117,7 @@ const createPost = (post) => {
     postDom.innerHTML =  `
         ${postHeader()}
         <p class="desc">${description}</p>
-        <img src="${image}" alt="">
+        <img src="${image}" alt="" class="pic"> 
         ${createPostInfo(likes)}
     `;
 
