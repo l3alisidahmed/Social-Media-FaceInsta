@@ -1,99 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <title>Post</title>
-</head>
-<body>
-    <div class="center">
-        <div class="post-img">
-            <img src="../images/photo-1438761681033-6461ffad8d80.jpeg" alt="" srcset="">
-        </div>
-        <div class="post-info">
-            <div class="left-div">
-                <div class="profile-info">
-                    <div class="profile-img"></div>
-                    <div class="profile-name">
-                        <h3>Sid ahmed</h3>
-                        <p>il ya 3h</p>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+        <title>Post</title>
+    </head>
+    <body>
+        <div class="center">
+            <div class="post-img">
+                <!-- <img src="../images/photo-1438761681033-6461ffad8d80.jpeg" alt="" srcset=""> -->
+            </div>
+            <div class="post-info"> 
+                <div class="left-div">
+                    <div class="profile-info">
+                        <div class="profile-img"></div>
+                        <div class="profile-name">
+                            <h3>Sid ahmed</h3>
+                            <p>il ya 3h</p>
+                        </div>
+                        <div class="close-icons">close</div>
                     </div>
-                    <div class="close-icons">close</div>
-                </div>
-                <div class="desc">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam adipisci itaque nemo quae cum magni fuga delectus facilis! Obcaecati cupiditate unde modi, facere quae quas dolor laudantium quod repudiandae exercitationem!</p>
-                </div>
-                <div class="add-comment">
-                    <input type="text" name="" id="">
-                    <div class="send-icons">Send</div>
-                </div>
-                <div class="comments">
-
-                    <div class="comment">
-                        <div class="profile-info">
-                            <div class="profile-img"></div>
-                            <div class="profile-name">
-                                <h3>Sid ahmed</h3>
-                                <p>il ya 3h</p>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui eligendi adipisci asperiores, distinctio vel excepturi assumenda alias ducimus beatae cupiditate error. Veritatis neque quibusdam impedit eum, ab vitae quos eaque.</p>
-                            <div class="heat-icons">heart</div>
-                        </div>
-                        <hr>
+                    <div class="desc">
+                        <!-- descrption of post -->
                     </div>
-                    
-                    <div class="comment">
-                        <div class="profile-info">
-                            <div class="profile-img"></div>
-                            <div class="profile-name">
-                                <h3>Sid ahmed</h3>
-                                <p>il ya 3h</p>
-                            </div>
+                    <div class="add-comment">
+                        <input type="text" name="" id="input-comment">
+                        <div class="send-icons">
+                            <span class="material-symbols-outlined">
+                                send
+                            </span>
                         </div>
-                        <div class="content">
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui eligendi adipisci asperiores, distinctio vel excepturi assumenda alias ducimus beatae cupiditate error. Veritatis neque quibusdam impedit eum, ab vitae quos eaque.</p>
-                            <div class="heat-icons">heart</div>
-                        </div>
-                        <hr>
                     </div>
-                    
-                    
-                    <div class="comment">
-                        <div class="profile-info">
-                            <div class="profile-img"></div>
-                            <div class="profile-name">
-                                <h3>Sid ahmed</h3>
-                                <p>il ya 3h</p>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui eligendi adipisci asperiores, distinctio vel excepturi assumenda alias ducimus beatae cupiditate error. Veritatis neque quibusdam impedit eum, ab vitae quos eaque.</p>
-                            <div class="heat-icons">heart</div>
-                        </div>
-                        <hr>
-                    </div>
-                    
-                    <div class="comment">
-                        <div class="profile-info">
-                            <div class="profile-img"></div>
-                            <div class="profile-name">
-                                <h3>Sid ahmed</h3>
-                                <p>il ya 3h</p>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui eligendi adipisci asperiores, distinctio vel excepturi assumenda alias ducimus beatae cupiditate error. Veritatis neque quibusdam impedit eum, ab vitae quos eaque.</p>
-                            <div class="heat-icons">heart</div>
-                        </div>
-                        <hr>
+                    <div class="comments">
+                        <!-- print comment -->
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</body>
+
+        <script src="./post.js"></script>
+        <script src="./addComment.js"></script>
+        <script src="./updateComment.js"></script>
+        <script src="./deleteComment.js"></script>
+    </body>
 </html>
