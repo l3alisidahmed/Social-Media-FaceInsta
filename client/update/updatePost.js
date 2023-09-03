@@ -28,7 +28,7 @@ if(submit) {
       image,
       likes
     })
-    fetch(`http://localhost:5000/api/v1/posts/${postId}`, {
+    fetch(`https://fesinsta-zsk.onrender.com/api/v1/posts/${postId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'

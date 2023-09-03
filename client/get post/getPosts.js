@@ -130,7 +130,7 @@ const createPost = (post) => {
 }
 /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
 
-fetch('http://localhost:5000/api/v1/posts')
+fetch('https://fesinsta-zsk.onrender.com/api/v1/posts')
 .then(res => res.json())
 .then(data => {
     const arr = data.posts;

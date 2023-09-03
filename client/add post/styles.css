@@ -6,10 +6,11 @@ body, form {
   
   /* Center the form on the page */
   body {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 70vh;
+    height: 90vh;
     background-color: #f0f0f0;
   }
   
@@ -71,5 +72,11 @@ body, form {
   
   label[for="path"] {
     color: #e2dceb; /* Green color for img URL label */
+  }
+
+  @media (max-width: 700px) {
+    #myForm {
+      width: 1500px;
+    }
   }
   

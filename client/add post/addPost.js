@@ -18,7 +18,7 @@ form.addEventListener("submit", function (event) {
   console.log(desc);
   console.log(ImgUrl);
 
-  fetch('http://localhost:5000/api/v1/posts/', {
+  fetch('https://fesinsta-zsk.onrender.com/api/v1/posts/', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'
@@ -27,7 +27,7 @@ form.addEventListener("submit", function (event) {
   })
   .then(res => res.json())
   .then(data => {
-    window.location.href = 'http://127.0.0.1:5500/client/index.html';
+    window.location.pathname = '/client/index.html';
   })
   .catch(err => console.log(err));
 

@@ -18,7 +18,7 @@ const updateLikes = (postDom) => {
     }
     const description = postDom.querySelector('.desc').textContent;
     const image = postDom.querySelector('.post-image').src;
-    fetch(`http://localhost:5000/api/v1/posts/${postDom.id}`, {
+    fetch(`https://fesinsta-zsk.onrender.com/api/v1/posts/${postDom.id}`, {
       method: 'PUT',
       headers: { 'Content-Type':'application/json' },
       body: JSON.stringify({
