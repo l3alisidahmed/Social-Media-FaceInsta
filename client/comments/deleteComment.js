@@ -1,6 +1,5 @@
 setTimeout(() => {
-    const trashIcons = document.querySelectorAll(".trash-icons .material-symbols-outlined")
-    console.log(trashIcons);
+    const trashIcons = document.querySelectorAll(".trash-icons .material-symbols-outlined");
     trashIcons.forEach(element => {
         element.addEventListener('click', () => {
             const commentId = element.parentElement.parentElement.parentElement.id;
@@ -10,7 +9,7 @@ setTimeout(() => {
                 method: "DELETE"
             })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => data)
             .catch(err => console.log(err));
         });
     });

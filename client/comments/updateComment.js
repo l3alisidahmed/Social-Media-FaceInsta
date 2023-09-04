@@ -3,7 +3,6 @@ const myInput = document.createElement('input')
 
 setTimeout(() => {
     const comment = document.querySelectorAll('.content p');
-    console.log(comment);
     comment.forEach(element => {
         element.addEventListener('click', () => {
             const postId = localStorage.getItem('postId');

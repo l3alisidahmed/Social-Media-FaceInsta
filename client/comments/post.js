@@ -3,7 +3,6 @@ const description = document.querySelector(".desc");
 const comments = document.querySelector('.comments');
 
 const id = localStorage.getItem('postId');
-console.log(id);
 
 let new_url = (URL) => {
     let new_url = URL.post.image.split('/');
@@ -15,8 +14,6 @@ let new_url = (URL) => {
 fetch(`https://fesinsta-zsk.onrender.com/api/v1/posts/${id}`)
 .then(res => res.json())
 .then(data => {
-    console.log(data);
-    console.log(data.post.description);
     const url = new_url(data);
     
     const desPost = description.innerHTML += descriptionPost(data.post.description);
@@ -30,7 +27,6 @@ fetch(`https://fesinsta-zsk.onrender.com/api/v1/posts/${id}/comments`)
 .then(data => {
     const arr = data.comments;
     arr.forEach(element => {
-        console.log(element);
         const comm = comments.innerHTML += comment(element.content, element.id);
     });
 })
