@@ -120,6 +120,7 @@ const createPost = (post) => {
     postDom.innerHTML =  `
         ${postHeader()}
         <p class="desc">${description}</p>
+        <a href="../comments/index.html"></a>
         <img src="${image}" alt="" class="post-image"> 
         ${createPostInfo(likes)}
     `;
