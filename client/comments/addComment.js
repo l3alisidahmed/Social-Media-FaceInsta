@@ -44,6 +44,7 @@ sendIcons.addEventListener('click', () => {
     .then(data => {
         const com = document.querySelector('.comments').innerHTML += comme(new_comment.content, id);
         console.log(data);
+        location.reload()
     })
     .catch(err => console.log(err));
 })
