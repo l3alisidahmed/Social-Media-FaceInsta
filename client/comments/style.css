@@ -68,13 +68,13 @@ body {
                     padding: 5px 10px; 
                 }
 
-                & .send-icons:hover {
-                    color: black;
-                    cursor: pointer;
-                }
-                
                 & > .send-icons {
                     
+                    & > .material-symbols-outlined:hover {
+                        color: black;
+                        cursor: pointer;
+                    }
+
                     & > .material-symbols-outlined {
                         color: gray;
                         font-size: 40px;
@@ -84,7 +84,6 @@ body {
                         'GRAD' 0,
                         'opsz' 24
                     }
-
                 }
             }
 
