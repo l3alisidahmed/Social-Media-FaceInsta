@@ -27,7 +27,7 @@ form.addEventListener("submit", function (event) {
   })
   .then(res => res.json())
   .then(data => {
-    window.location.href = 'https://main--cosmic-crumble-da4920.netlify.app/';
+    window.location.href = 'https://main--cosmic-crumble-da4920.netlify.app';
   })
   .catch(err => console.log(err));
 

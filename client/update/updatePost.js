@@ -11,7 +11,7 @@ const updatePost = (postDom) => {
     console.log(postId);
     localStorage.setItem('postId', postId);
     localStorage.setItem('likes', likes);
-    location.pathname = '/client/update/updatepost.html';
+    location.pathname = '/update/updatepost.html';
   }
 }
 
@@ -44,7 +44,7 @@ if(submit) {
     })
     .then(data => {
       console.log(data);
-      location.pathname = '/client/index.html';
+      location.href = 'https://stellular-palmier-4ad655.netlify.app';
     })
     .catch(err => console.error(err));
   });
