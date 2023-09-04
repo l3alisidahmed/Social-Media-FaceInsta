@@ -14,9 +14,7 @@ setTimeout(() => {
     });
 
     commentIcons.forEach(element => {
-        console.log(element);
         element.addEventListener('click', () => {
-            console.log(element);
             localStorage.setItem('postId', element.parentElement.parentElement.parentElement.id);
             myLink.href = '/comments/index.html';
             element.before(myLink);

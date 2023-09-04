@@ -39,7 +39,7 @@ const commentsSection = () => {
     `;
 }
 
-const createPostInfo = (likes) => {
+const createPostInfo = (likes, comments) => {
     return `
         <div class="post-info">
             ${createPostProfile()}
@@ -48,7 +48,7 @@ const createPostInfo = (likes) => {
                 <span class="hearts-number">${likes}</span>
                 <i class="ri-chat-3-line toggle-comments"></i>
                 ${commentsSection()}
-                <span>96</span>
+                <span>${comments}</span>
             </div>
         </div>
     `;
@@ -57,18 +57,27 @@ const createPostInfo = (likes) => {
 const createPost = (post) => {
     const { id, description, image, likes } = post;
     const postDom = document.createElement('div');
-    postDom.id = id;
-    postDom.classList.add('post-box');
 
-    postDom.innerHTML =  `
-        ${postHeader()}
-        <p class="desc">${description}</p>
-        <a href="/comments/index.html" id="link"></a>
-        <img src="${image}" alt="" class="post-image"> 
-        ${createPostInfo(likes)}
-    `;
-    updatePost(postDom);
-    updateLikes(postDom);
+    let numberComments;
+
+    fetch(`https://fesinsta-zsk.onrender.com/api/v1/posts/${id}/comments`)
+    .then(res => res.json())
+    .then(data => {
+        numberComments = data.comments.length;
+        postDom.id = id;
+        postDom.classList.add('post-box');
+    
+        postDom.innerHTML =  `
+            ${postHeader()}
+            <p class="desc">${description}</p>
+            <a href="/comments/index.html" id="link"></a>
+            <img src="${image}" alt="" class="post-image"> 
+            ${createPostInfo(likes, numberComments)}
+        `;
+        updatePost(postDom);
+        updateLikes(postDom);
+    })
+    .catch(err => console.log(err));
 
     return postDom;
 }
