@@ -10,6 +10,7 @@ setTimeout(() => {
             })
             .then(res => res.json())
             .then(data => {
+                console.log(data);
                 document.getElementById(`${commentId}`).remove();
             })
             .catch(err => console.log(err));
