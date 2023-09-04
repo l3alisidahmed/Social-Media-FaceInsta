@@ -29,7 +29,7 @@ form.addEventListener("submit", function (event) {
   .then(data => {
     window.location.href = 'https://main--cosmic-crumble-da4920.netlify.app';
   })
-  .catch(err => console.log(err));
+  .catch(err => console.error(err));
 
   // You can also access form fields and their values, e.g.,:
   // var nameInput = document.getElementById("name");
