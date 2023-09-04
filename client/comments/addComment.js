@@ -1,4 +1,3 @@
-// add comment
 const inputComment = document.getElementById('input-comment');
 const sendIcons = document.querySelector('.material-symbols-outlined');
 
@@ -43,7 +42,8 @@ sendIcons.addEventListener('click', () => {
     })
     .then(res => res.json())
     .then(data => {
-        document.querySelector('.comments').innerHTML += comment(new_comment.content, id);
+        const com = document.querySelector('.comments').innerHTML += comment(new_comment.content, id);
+        // document.querySelector('.comments').append(com);
         console.log(data);
     })
     .catch(err => console.log(err));
