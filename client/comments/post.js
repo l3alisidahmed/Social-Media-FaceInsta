@@ -4,17 +4,22 @@ const comments = document.querySelector('.comments');
 
 const id = localStorage.getItem('postId');
 
-let new_url = (URL) => {
-    let new_url = URL.post.image.split('/');
-    new_url.splice(1,1);
-    return new_url.join('/');
+let check_url = (URL) => {
+
+    if (URL.startsWith(".")) {
+        let new_url = URL.split('/');
+        new_url.splice(1,1);
+        return new_url.join('/');
+    }
+
+    return URL;
 }
 
 // get post with id
 fetch(`https://fesinsta-zsk.onrender.com/api/v1/posts/${id}`)
 .then(res => res.json())
 .then(data => {
-    const url = new_url(data);
+    const url = check_url(data.post.image);
     
     const desPost = description.innerHTML += descriptionPost(data.post.description);
     const imgPost = myImg.innerHTML += postImg(url);
