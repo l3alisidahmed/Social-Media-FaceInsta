@@ -12,7 +12,7 @@ form.addEventListener("submit", function (event) {
   const new_post = {
     'description': desc,
     'image': ImgUrl,
-    'likes': 2
+    'likes': 0
    }
 
   console.log(desc);
