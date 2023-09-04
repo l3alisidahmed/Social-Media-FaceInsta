@@ -26,7 +26,7 @@ fetch(`https://fesinsta-zsk.onrender.com/api/v1/posts/${id}`)
 } )
 .catch(err => console.log(err));
 
-setTimeout(() => {
+export function getComment () {
     // get comment with id of post
     fetch(`https://fesinsta-zsk.onrender.com/api/v1/posts/${id}/comments`)
     .then(res => res.json())
@@ -37,7 +37,9 @@ setTimeout(() => {
         });
     })
     .catch(err => console.log(err));
-}, 3000);
+}
+
+
 
 const postImg = (imgUrl) => {
     return `

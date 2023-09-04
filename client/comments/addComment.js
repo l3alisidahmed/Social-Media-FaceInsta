@@ -1,3 +1,5 @@
+import { getComment } from "./post";
+
 const inputComment = document.getElementById('input-comment');
 const sendIcons = document.querySelector('.material-symbols-outlined');
 
@@ -16,6 +18,8 @@ sendIcons.addEventListener('click', () => {
         body: JSON.stringify(new_comment)
     })
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => {
+        getComment();
+    })
     .catch(err => console.log(err));
 })
