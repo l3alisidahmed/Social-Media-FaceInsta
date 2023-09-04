@@ -26,7 +26,7 @@ fetch(`https://fesinsta-zsk.onrender.com/api/v1/posts/${id}`)
 } )
 .catch(err => console.log(err));
 
-    // get comment with id of post
+// get comment with id of post
 fetch(`https://fesinsta-zsk.onrender.com/api/v1/posts/${id}/comments`)
 .then(res => res.json())
 .then(data => {
