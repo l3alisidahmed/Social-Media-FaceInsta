@@ -2,7 +2,7 @@ const inputComment = document.getElementById('input-comment');
 const sendIcons = document.querySelector('.material-symbols-outlined');
 
 
-const comment = (content, id) => {
+const comme = (content, id) => {
     return `
     <div class="comment" id="${id}">
         <div class="profile-info">
@@ -42,7 +42,7 @@ sendIcons.addEventListener('click', () => {
     })
     .then(res => res.json())
     .then(data => {
-        const com = document.querySelector('.comments').innerHTML += comment(new_comment.content, id);
+        const com = document.querySelector('.comments').innerHTML += comme(new_comment.content, id);
         // document.querySelector('.comments').append(com);
         console.log(data);
     })
