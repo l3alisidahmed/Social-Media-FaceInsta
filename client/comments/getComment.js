@@ -19,6 +19,7 @@ setTimeout(() => {
         element.addEventListener('click', () => {
             localStorage.setItem('postId', element.parentElement.parentElement.parentElement.id);
             myLink.href = '/comments/index.html';
+            element.before(myLink);
             myLink.click();
         })
     })
