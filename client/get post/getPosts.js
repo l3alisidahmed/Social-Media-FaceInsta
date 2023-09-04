@@ -9,9 +9,9 @@ const postHeader = () => {
         <div class="container">
             <span class="options">...</span>
             <ul class="list">
-                <a href="../update/updatepost.html">
-                    <li class="update">Update</li>
-                </a>
+                <li class="update">
+                    <a href="/client/update/updatepost.html">Update</a>
+                </li>
                 <li class="delete">Delete</li>
             </ul>
         </div>
@@ -101,7 +101,12 @@ fetch('https://fesinsta-zsk.onrender.com/api/v1/posts')
         })
         .catch(err => console.log(err));
     });
-        let deleteBtn = document.querySelectorAll('.delete');
+})
+.catch(err => console.log(err));
+
+setTimeout(() => {
+    const deleteBtn = document.querySelectorAll('.delete');
+    console.log(deleteBtn);
     deleteBtn.forEach(element => {
         element.addEventListener('click', () => {
             const postId = element.parentElement.parentElement.parentElement.id 
@@ -115,5 +120,4 @@ fetch('https://fesinsta-zsk.onrender.com/api/v1/posts')
             .catch(err => console.log(err));
         });
     });
-})
-.catch(err => console.log(err));
+}, 2000);
