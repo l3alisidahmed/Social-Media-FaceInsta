@@ -6,7 +6,7 @@ setTimeout(() => {
             const commentId = element.parentElement.parentElement.parentElement.id;
             const postId = localStorage.getItem('postId');
 
-            fetch(`http://localhost:5000/api/v1/posts/${postId}/comments/${commentId}`,{
+            fetch(`https://fesinsta-zsk.onrender.com/api/v1/posts/${postId}/comments/${commentId}`,{
                 method: "DELETE"
             })
             .then(res => res.json())

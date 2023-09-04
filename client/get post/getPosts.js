@@ -167,7 +167,7 @@ fetch('https://fesinsta-zsk.onrender.com/api/v1/posts')
             const post = document.getElementById(postId);
             post.remove();
     
-            fetch(`http://localhost:5000/api/v1/posts/${Number(postId)}`, {
+            fetch(`https://fesinsta-zsk.onrender.com/api/v1/posts/${Number(postId)}`, {
                 method: 'DELETE'
             }).then(res => res.json())
             .then(data => console.log(data))

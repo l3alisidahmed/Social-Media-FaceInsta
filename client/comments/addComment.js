@@ -7,7 +7,7 @@ sendIcons.addEventListener('click', () => {
     }
     console.log(inputComment.value);
     const id = localStorage.getItem('postId');
-    fetch(`http://localhost:5000/api/v1/posts/${id}/comments`, {
+    fetch(`https://fesinsta-zsk.onrender.com/api/v1/posts/${id}/comments`, {
         method: 'POST',
         mode: "cors",
         headers: {
