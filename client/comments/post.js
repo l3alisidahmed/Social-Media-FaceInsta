@@ -12,7 +12,7 @@ let new_url = (URL) => {
 }
 
 // get post with id
-fetch(`http://localhost:5000/api/v1/posts/${id}`)
+fetch(`https://fesinsta-zsk.onrender.com/api/v1/posts/${id}`)
 .then(res => res.json())
 .then(data => {
     console.log(data);
@@ -25,7 +25,7 @@ fetch(`http://localhost:5000/api/v1/posts/${id}`)
 .catch(err => console.log(err));
 
 // get comment with id of post
-fetch(`http://localhost:5000/api/v1/posts/${id}/comments`)
+fetch(`https://fesinsta-zsk.onrender.com/api/v1/posts/${id}/comments`)
 .then(res => res.json())
 .then(data => {
     const arr = data.comments;

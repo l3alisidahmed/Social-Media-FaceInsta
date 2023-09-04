@@ -68,7 +68,9 @@ const postHeader = () => {
         <div class="container">
             <span class="options">...</span>
             <ul class="list">
-                <li class="update">Update</li>
+                <a href="../update/updatepost.html">
+                    <li class="update">Update</li>
+                </a>
                 <li class="delete">Delete</li>
             </ul>
         </div>
