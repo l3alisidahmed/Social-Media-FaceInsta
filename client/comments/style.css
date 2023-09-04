@@ -112,8 +112,12 @@ body {
                             padding: 15px 30px 10px 20px;
                         }
 
-                        & .trash-icons {
+                        & .trash-icons:hover {
                             color: brown;
+                            cursor: pointer;
+                        }
+
+                        & .trash-icons {
                             font-size: 40px;
                             & .material-symbols-outlined {
                               font-variation-settings:
