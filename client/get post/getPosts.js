@@ -10,7 +10,7 @@ const postHeader = () => {
             <span class="options">...</span>
             <ul class="list">
                 <li class="update">
-                    <a href="/client/update/updatepost.html">Update</a>
+                    <a href="/update/updatepost.html">Update</a>
                 </li>
                 <li class="delete">Delete</li>
             </ul>
