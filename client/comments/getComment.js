@@ -19,6 +19,8 @@ setTimeout(() => {
             myLink.href = '/comments/index.html';
             element.before(myLink);
             myLink.click();
-        })
-    })
-}, 5000);
+        });
+    });
+
+    console.log("on");
+}, 3000);
