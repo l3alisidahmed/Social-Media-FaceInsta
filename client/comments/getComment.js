@@ -7,7 +7,7 @@ setTimeout(() => {
         element.addEventListener('click', () => {
             // To navigate to a different URL
             localStorage.setItem('postId', element.parentElement.id);
-            window.location.pathname = '/client/comments/index.html';
+            window.location.href = 'https://stellular-palmier-4ad655.netlify.app/';
         })
     });
 }, 500);
