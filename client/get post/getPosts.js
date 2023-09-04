@@ -57,15 +57,15 @@ const createPostInfo = (likes, comments) => {
 const createPost = (post) => {
     const { id, description, image, likes } = post;
     const postDom = document.createElement('div');
-
+    
     let numberComments;
-
+    
+    postDom.id = id;
+    postDom.classList.add('post-box');
     fetch(`https://fesinsta-zsk.onrender.com/api/v1/posts/${id}/comments`)
     .then(res => res.json())
     .then(data => {
         numberComments = data.comments.length;
-        postDom.id = id;
-        postDom.classList.add('post-box');
     
         postDom.innerHTML =  `
             ${postHeader()}
@@ -76,9 +76,10 @@ const createPost = (post) => {
         `;
         updatePost(postDom);
         updateLikes(postDom);
+
     })
     .catch(err => console.log(err));
-
+    
     return postDom;
 }
 /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
