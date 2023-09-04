@@ -54,31 +54,22 @@ const createPostInfo = (likes, comments) => {
     `;
 }
 
-const createPost = (post) => {
+const createPost = (post, numberComments) => {
     const { id, description, image, likes } = post;
     const postDom = document.createElement('div');
     
-    let numberComments;
-    
     postDom.id = id;
     postDom.classList.add('post-box');
-    fetch(`https://fesinsta-zsk.onrender.com/api/v1/posts/${id}/comments`)
-    .then(res => res.json())
-    .then(data => {
-        numberComments = data.comments.length;
-    
-        postDom.innerHTML =  `
-            ${postHeader()}
-            <p class="desc">${description}</p>
-            <a href="/comments/index.html" id="link"></a>
-            <img src="${image}" alt="" class="post-image"> 
-            ${createPostInfo(likes, numberComments)}
-        `;
-        updatePost(postDom);
-        updateLikes(postDom);
 
-    })
-    .catch(err => console.log(err));
+    postDom.innerHTML =  `
+        ${postHeader()}
+        <p class="desc">${description}</p>
+        <a href="/comments/index.html" id="link"></a>
+        <img src="${image}" alt="" class="post-image"> 
+        ${createPostInfo(likes, numberComments)}
+    `;
+    updatePost(postDom);
+    updateLikes(postDom);
     
     return postDom;
 }
@@ -89,29 +80,28 @@ fetch('https://fesinsta-zsk.onrender.com/api/v1/posts')
 .then(data => {
     const arr = data.posts;
     arr.forEach(element => {
-        // myImg.alt = "";
-        // myImg.src = element.image;
-        // myP.textContent = element.description;
-        // likesSpan.textContent = element.likes;
-        // postBox.id = element.id;
-
-        /* I Added This */
-        const post = createPost(element);
-        mainPosts.append(post);
-        /*^^^^^^^^^^^^^^*/
-
-        // mainPosts.append(postBox);
-
-        const options = document.querySelectorAll('.options');
-
-        options.forEach(option => {
-            const list = option.nextElementSibling;
-            option.onclick = () => {
-                list.classList.toggle('active');
-            }
-        });
+        console.log(element.id);
+        console.log(element);
+        fetch(`https://fesinsta-zsk.onrender.com/api/v1/posts/${element.id}/comments`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data.comments.length);
+            /* I Added This */
+            const post = createPost(element, data.comments.length);
+            mainPosts.append(post);
+            
+            const options = document.querySelectorAll('.options');
+            
+            options.forEach(option => {
+                const list = option.nextElementSibling;
+                option.onclick = () => {
+                    list.classList.toggle('active');
+                }
+            });
+        })
+        .catch(err => console.log(err));
     });
-    let deleteBtn = document.querySelectorAll('.delete');
+        let deleteBtn = document.querySelectorAll('.delete');
     deleteBtn.forEach(element => {
         element.addEventListener('click', () => {
             const postId = element.parentElement.parentElement.parentElement.id 
