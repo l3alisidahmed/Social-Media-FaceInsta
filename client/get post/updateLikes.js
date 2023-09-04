@@ -28,14 +28,10 @@ const updateLikes = (postDom) => {
       })
     })
     .then(response => {
-      console.log(response.status);
-      console.log(response);
       response.json();
-      
     })
     .then(data => {
-      console.log('data = ' + data);
-      
+      console.log(data);
     })
     .catch(err => console.error(err));
   }

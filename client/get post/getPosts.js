@@ -137,7 +137,6 @@ fetch('https://fesinsta-zsk.onrender.com/api/v1/posts')
 .then(res => res.json())
 .then(data => {
     const arr = data.posts;
-    console.log(arr);
     arr.forEach(element => {
         // myImg.alt = "";
         // myImg.src = element.image;
@@ -153,7 +152,6 @@ fetch('https://fesinsta-zsk.onrender.com/api/v1/posts')
         // mainPosts.append(postBox);
 
         const options = document.querySelectorAll('.options');
-        console.log(options);
 
         options.forEach(option => {
             const list = option.nextElementSibling;
@@ -166,11 +164,10 @@ fetch('https://fesinsta-zsk.onrender.com/api/v1/posts')
     deleteBtn.forEach(element => {
         element.addEventListener('click', () => {
             const postId = element.parentElement.parentElement.parentElement.id 
-            console.log(postId);
             const post = document.getElementById(postId);
             post.remove();
     
-            fetch(`http://localhost:5000/api/v1/posts/${Number(postId)}`, {
+            fetch(`https://fesinsta-zsk.onrender.com/api/v1/posts/${Number(postId)}`, {
                 method: 'DELETE'
             }).then(res => res.json())
             .then(data => console.log(data))

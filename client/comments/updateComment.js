@@ -21,7 +21,7 @@ setTimeout(() => {
                     'content': myInput.value
                 }
 
-                fetch(`http://localhost:5000/api/v1/posts/${postId}/comments/${commentId}`, {
+                fetch(`https://fesinsta-zsk.onrender.com/api/v1/posts/${postId}/comments/${commentId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'

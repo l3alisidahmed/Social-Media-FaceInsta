@@ -5,13 +5,11 @@ const submit = document.getElementById('submit-update');
 const updatePost = (postDom) => {
   const postId = postDom.id;
   const likes = postDom.querySelector('.hearts-number').textContent;
-  console.log(likes);
   const update = postDom.querySelector('.update');
   update.onclick = () => {
-    console.log(postId);
     localStorage.setItem('postId', postId);
     localStorage.setItem('likes', likes);
-    location.pathname = '/client/update/updatepost.html';
+    location.pathname = '/update/updatepost.html';
   }
 }
 
@@ -43,8 +41,7 @@ if(submit) {
       return response.json();
     })
     .then(data => {
-      console.log(data);
-      location.pathname = '/client/index.html';
+      location.href = 'https://main--cosmic-crumble-da4920.netlify.app';
     })
     .catch(err => console.error(err));
   });
