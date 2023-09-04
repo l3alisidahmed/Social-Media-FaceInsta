@@ -1,5 +1,3 @@
-import { elementAt } from "rxjs";
-
 let id;
 setTimeout(() => {
     const myLink = document.createElement('a')
@@ -17,6 +15,7 @@ setTimeout(() => {
 
     commentIcons.forEach(element => {
         element.addEventListener('click', () => {
+            console.log(element);
             localStorage.setItem('postId', element.parentElement.parentElement.parentElement.id);
             myLink.href = '/comments/index.html';
             element.before(myLink);
