@@ -1,12 +1,10 @@
-
-
 const updateLikes = (postDom) => {
   const heart = postDom.querySelector('.likes-count');
   const likesDom = postDom.querySelector('.hearts-number');
   let likesNumber = parseInt(likesDom.textContent);
   heart.onclick = e => {
-    e.preventDefault();
-    e.stopPropagation();
+    // e.preventDefault();
+    // e.stopPropagation();
     if(heart.classList.contains('ri-heart-line')) {
       heart.classList.remove('ri-heart-line');
       heart.classList.add('ri-heart-fill');
