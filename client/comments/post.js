@@ -26,16 +26,18 @@ fetch(`https://fesinsta-zsk.onrender.com/api/v1/posts/${id}`)
 } )
 .catch(err => console.log(err));
 
-// get comment with id of post
-fetch(`https://fesinsta-zsk.onrender.com/api/v1/posts/${id}/comments`)
-.then(res => res.json())
-.then(data => {
-    const arr = data.comments;
-    arr.forEach(element => {
-        const comm = comments.innerHTML += comment(element.content, element.id);
-    });
-})
-.catch(err => console.log(err));
+setTimeout(() => {
+    // get comment with id of post
+    fetch(`https://fesinsta-zsk.onrender.com/api/v1/posts/${id}/comments`)
+    .then(res => res.json())
+    .then(data => {
+        const arr = data.comments;
+        arr.forEach(element => {
+            const comm = comments.innerHTML += comment(element.content, element.id);
+        });
+    })
+    .catch(err => console.log(err));
+}, 3000);
 
 const postImg = (imgUrl) => {
     return `

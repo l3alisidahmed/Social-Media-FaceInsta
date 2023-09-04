@@ -21,6 +21,4 @@ setTimeout(() => {
             myLink.click();
         });
     });
-
-    console.log("on");
 }, 3000);
