@@ -1,6 +1,10 @@
+import { elementAt } from "rxjs";
+
 let id;
 setTimeout(() => {
+    const myLink = document.createElement('a')
     const postBox = document.querySelectorAll('.post-box .post-image');
+    const commentIcons = document.querySelectorAll('.toggle-comments');
     postBox.forEach(element => {
         element.addEventListener('click', () => {
             const link = document.getElementById('link'); 
@@ -10,4 +14,12 @@ setTimeout(() => {
             // window.location.href = 'https://main--cosmic-crumble-da4920.netlify.app';
         })
     });
+
+    commentIcons.forEach(element => {
+        element.addEventListener('click', () => {
+            localStorage.setItem('postId', element.parentElement.parentElement.parentElement.id);
+            myLink.href = '/comments/index.html';
+            myLink.click();
+        })
+    })
 }, 500);
