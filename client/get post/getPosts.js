@@ -46,7 +46,9 @@ const createPostInfo = (likes) => {
             <div class="likes">
                 <i class="ri-heart-line likes-count"></i>
                 <span class="hearts-number">${likes}</span>
-                <i class="ri-chat-3-line toggle-comments"></i>
+                <a href="/comments/index.html">
+                    <i class="ri-chat-3-line toggle-comments"></i>
+                </a>
                 ${commentsSection()}
                 <span>96</span>
             </div>
