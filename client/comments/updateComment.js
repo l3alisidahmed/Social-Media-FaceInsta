@@ -1,6 +1,5 @@
 const myInput = document.createElement('input')
 
-
 setTimeout(() => {
     const comment = document.querySelectorAll('.content p');
     comment.forEach(element => {
