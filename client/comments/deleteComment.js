@@ -9,7 +9,9 @@ setTimeout(() => {
                 method: "DELETE"
             })
             .then(res => res.json())
-            .then(data => data)
+            .then(data => {
+                document.getElementById(`${commentId}`).remove();
+            })
             .catch(err => console.log(err));
         });
     });
