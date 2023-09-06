@@ -1,4 +1,4 @@
-const postId = 1693581915201;
+const postId = localStorage.getItem('postId');
 const desc = document.querySelector('.desc');
 const img = document.getElementById('pic');
 const likes = document.querySelector('.hearts-number');
