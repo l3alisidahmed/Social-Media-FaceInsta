@@ -18,7 +18,7 @@ if(submit) {
     e.preventDefault();
     const postId = localStorage.getItem('postId');
     const likes = localStorage.getItem('likes');
-    const description = document.getElementById('updatedDescription');
+    const description = document.getElementById('updatedDescription').value;
     console.log(description);
     const image = document.getElementById('updatedImageUrl').value;
     console.log(image);

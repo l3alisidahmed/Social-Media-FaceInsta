@@ -29,9 +29,9 @@ fetch(`https://fesinsta-zsk.onrender.com/api/v1/posts/${postId}`)
     likes.innerHTML = data.post.likes;
     inputUrl.value = data.post.image;
     inputDescription.value = data.post.description;
-    inputDescription.id = 'desc-inp'
+    // inputDescription.id = 'desc-inp'
     inputDescription.focus();
-    document.getElementById('desc-inp').onblur = () => {
+    inputDescription.onblur = () => {
         desc.innerHTML = inputDescription.value
     }
     inputUrl.onblur = () => {
