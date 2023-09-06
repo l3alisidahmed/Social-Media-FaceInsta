@@ -14,13 +14,13 @@
                     <div class="form">
                         <!-- <textarea id="story" name="story" rows="5" cols="33">It was a dark and stormy night...</textarea> -->
                         <label for="url">Image Path:</label><br>
-                        <textarea class="url" name="url" rows="5" cols="33" placeholder="URL"></textarea><br>
+                        <textarea id="updatedImageUrl" class="url" name="url" rows="5" cols="33" placeholder="URL"></textarea><br>
                         <label for="desc">Description:</label><br>
-                        <textarea class="desc-inp" name="desc" rows="10" cols="33" placeholder="desc"></textarea> 
+                        <textarea id="updatedDescription" class="desc-inp" name="desc" rows="10" cols="33" placeholder="desc"></textarea> 
                     </div>
                     <div class="btn">
-                        <input type="submit" value="Save" class="save">
-                        <input type="submit" value="Cancel" class="Cancel">
+                        <input id="submit-update" type="submit" value="Save" class="save">
+                        <input id="cancel-update" type="submit" value="Cancel" class="Cancel">
                     </div>
                 </div>
                 <div class="right">
@@ -28,7 +28,7 @@
                         <p class="option">...</p>
                         <p class="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia reiciendis numquam fuga nulla cupiditate rem architecto dicta ducimus cum est porro veritatis amet culpa sequi, itaque placeat voluptas quaerat adipisci.</p>
                         <div class="post-img">
-                            <img src="../images/Dreamy Anime Lo Fi Girl at laptop Wallpaper Iphone.jpeg" alt="" srcset="">
+                            <img src="../images/Dreamy Anime Lo Fi Girl at laptop Wallpaper Iphone.jpeg" alt="" srcset="" id="pic">
                         </div>
                         <div class="bottom-post">
                             <div class="profile-info">
@@ -42,12 +42,14 @@
                                 </div>
                                 <div class="comment-icons">
                                     <i class="ri-chat-3-line toggle-comments"></i>
-                                    <span>2</span>
+                                    <span class="comments-number">2</span>
                                 </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script src="./updatePost.js" type="module"></script>
+        <script src="./getInfoPost.js"></script>
     </body>
 </html>

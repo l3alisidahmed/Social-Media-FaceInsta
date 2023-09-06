@@ -13,19 +13,21 @@ const updatePost = (postDom) => {
   }
 }
 
-
 if(submit) {
   submit.addEventListener('click', e => {
     e.preventDefault();
     const postId = localStorage.getItem('postId');
     const likes = localStorage.getItem('likes');
-    const description = document.getElementById('updatedDescription').value;
+    const description = document.getElementById('updatedDescription');
+    console.log(description);
     const image = document.getElementById('updatedImageUrl').value;
+    console.log(image);
     const updatedPost = JSON.stringify({
       description,
       image,
       likes
     })
+    console.log(updatedPost);
     fetch(`https://fesinsta-zsk.onrender.com/api/v1/posts/${postId}`, {
       method: 'PUT',
       headers: {

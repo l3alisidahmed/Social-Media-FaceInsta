@@ -65,7 +65,7 @@ body{
     width: 180px;
 }
 
-.save {
+.save:hover {
     background-color: #127369;
 }
 
