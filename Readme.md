@@ -1,4 +1,4 @@
-## Live URL
+### Live URL
 - https://main--cosmic-crumble-da4920.netlify.app/
 
 
@@ -7,7 +7,7 @@
 ### Posts Api Design 📜
 
 <span style="color: gray; font-size: 1.2rem; font-weight: bold">Create Post</span> \
-**Endpoint (URL):** /api/v1/posts \
+**Endpoint (URL):** `/api/v1/posts` \
 **HTTP Request Method:** <span style="color: gray;">POST</span> \
 <span style="font-style: italic">Request Body:</span>
 ```json
@@ -37,7 +37,7 @@
 ```
 
 <span style="color: gray; font-size: 1.2rem; font-weight: bold">Get All Posts</span> \
-**Endpoint (URL):** /api/v1/posts \
+**Endpoint (URL):** `/api/v1/posts` \
 **HTTP Request Method:** <span style="color: gray;">GET</span> \
 <span style="color: green; font-style: italic">Success Response Body:</span>
 ```json
@@ -61,7 +61,7 @@
 ```
 
 <span style="color: gray; font-size: 1.2rem; font-weight: bold">Get Post</span> \
-**Endpoint (URL):** /api/v1/posts/:id \
+**Endpoint (URL):** `/api/v1/posts/:id` \
 **HTTP Request Method:** <span style="color: gray;">GET</span> \
 <span style="color: green; font-style: italic">Success Response Body:</span>
 ```json
@@ -84,7 +84,7 @@
 ```
 
 <span style="color: gray; font-size: 1.2rem; font-weight: bold">Update Post</span> \
-**Endpoint (URL):** /api/v1/posts/:id \
+**Endpoint (URL):** `/api/v1/posts/:id` \
 **HTTP Request Method:** <span style="color: gray;">PUT</span> \
 <span style="font-style: italic">Request Body:</span>
 ```json
@@ -114,7 +114,7 @@
 ```
 
 <span style="color: gray; font-size: 1.2rem; font-weight: bold">Delete Post</span> \
-**Endpoint (URL):** /api/v1/posts/:id \
+**Endpoint (URL):** `/api/v1/posts/:id` \
 **HTTP Request Method:** <span style="color: gray;">DELETE</span> \
 <span style="color: green; font-style: italic">Success Response Body:</span>
 ```json
@@ -135,7 +135,7 @@
 ### Comments Api Design 💬
 
 <span style="color: gray; font-size: 1.2rem; font-weight: bold">Add Comment</span> \
-**Endpoint (URL):** /api/v1/posts/:id/comments/:id \
+**Endpoint (URL):** `/api/v1/posts/:id/comments/:id` \
 **HTTP Request Method:** <span style="color: gray;">POST</span> \
 <span style="font-style: italic">Request Body:</span>
 ```json
@@ -163,7 +163,7 @@
 ```
 
 <span style="color: gray; font-size: 1.2rem; font-weight: bold">Get All Comments</span> \
-**Endpoint (URL):** /api/v1/posts/:id/comments \
+**Endpoint (URL):** `/api/v1/posts/:id/comments` \
 **HTTP Request Method:** <span style="color: gray;">GET</span> \
 <span style="color: green; font-style: italic">Success Response Body:</span>
 ```json
@@ -185,7 +185,7 @@
 ```
 
 <span style="color: gray; font-size: 1.2rem; font-weight: bold">Update Comment</span> \
-**Endpoint (URL):** /api/v1/posts/:id/comments/:id \
+**Endpoint (URL):** `/api/v1/posts/:id/comments/:id` \
 **HTTP Request Method:** <span style="color: gray;">PUT</span> \
 <span style="font-style: italic">Request Body:</span>
 ```json
@@ -213,7 +213,7 @@
 ```
 
 <span style="color: gray; font-size: 1.2rem; font-weight: bold">Delete Comment</span> \
-**Endpoint (URL):** /api/v1/posts/:id/comments/:id \
+**Endpoint (URL):** `/api/v1/posts/:id/comments/:id` \
 **HTTP Request Method:** <span style="color: gray;">DELETE</span> \
 <span style="color: green; font-style: italic">Success Response Body:</span>
 ```json
